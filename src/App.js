@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div className="bg-gray-900 h-[1200px]">
+    <div className="bg-gray-900">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

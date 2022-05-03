@@ -15,8 +15,8 @@ const AddInventoryItem = () => {
         const discription = e.target.discription.value;
         const bookPrice = e.target.bookPrice.value;
         const quantity = e.target.quantity.value;
-        const suplierName = e.target.suplierName.value;
-        const bookInfo = { bookName, imgUrl, discription, bookPrice, quantity, suplierName };
+        const supplierName = e.target.supplierName.value;
+        const bookInfo = { bookName, imgUrl, discription, bookPrice, quantity, supplierName };
 
         (async () => {
             try {
@@ -47,13 +47,14 @@ const AddInventoryItem = () => {
     return (
         <div className='w-[500px] mx-auto'>
             <form onSubmit={handleOnsubmit} className='flex flex-col border-2 border-gray-700 mx-auto mt-16 rounded-lg'>
-                <h3 className='text-center mt-12 font-bold text-green-600'>Add Inventory Item</h3>
-                <input ref={nameRef} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded mt-14' type="text" name="bookName" id="bookName" placeholder='Book Name' autoComplete='off' required />
+                <h3 className='text-center mt-8 font-bold text-green-600'>Add Inventory Item</h3>
+                <input ref={nameRef} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded mt-8' type="text" name="bookName" id="bookName" placeholder='Book Name' autoComplete='off' required />
                 <input className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="imgUrl" id="imgUrl" placeholder='Image URL' autoComplete='off' required />
-                <input className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="discription" id="discription" placeholder='Short Discription' autoComplete='off' required />
                 <input className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="bookPrice" id="bookPrice" placeholder='Book Price' autoComplete='off' required />
-                <input className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="quantity" id="quantity" placeholder='quantity' autoComplete='off' required />
-                <input className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="suplierName" id="suplierName" placeholder='Suplier Name' autoComplete='off' required />
+                <input className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="quantity" id="quantity" placeholder='Quantity' autoComplete='off' required />
+                <input className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="supplierName" id="supplierName" placeholder='Supplier Name' autoComplete='off' required />
+                <label htmlFor="discription" className='text-green-600 pl-12 font-bold'>Discription</label>
+                <textarea className='w-[400px] h-[150px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold text-justify rounded' type="text" name="discription" id="discription" placeholder='Add a short discription' autoComplete='off' required />
                 <input className='w-[400px] mx-auto mb-12 bg-green-600 text-gray-300 py-2 rounded font-bold' type="submit" value="Add Item" />
             </form>
         </div>
