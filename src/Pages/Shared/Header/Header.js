@@ -8,6 +8,7 @@ const Header = () => {
                 <CustomLink to="/">Home</CustomLink>
                 <CustomLink to="/manageinventories">Manage Inventories</CustomLink>
                 <CustomLink to="/addinventoryitem">Add Inventory Item</CustomLink>
+                <CustomLink to="/login">Login</CustomLink>
             </nav>
         </div>
     );

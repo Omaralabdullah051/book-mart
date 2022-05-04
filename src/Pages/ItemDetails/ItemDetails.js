@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const ItemDetails = () => {
     const { id } = useParams();
     const [bookInfo, setbookInfo] = useState({});
     const { bookName, bookPrice, discription, imgUrl, quantity, supplierName } = bookInfo;
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -63,6 +64,7 @@ const ItemDetails = () => {
                     const data = await res.json();
                     if (data.modifiedCount >= 1) {
                         setbookInfo({ ...bookInfo, quantity: updatedQuantity.quantity });
+                        toast.success("Successfully restocked");
                     }
                 }
                 if (e.target.number.value < 0) {
@@ -80,9 +82,13 @@ const ItemDetails = () => {
         })();
     }
 
+    const handleNavigate = () => {
+        navigate('/manageInventories');
+    }
+
     return (
         <div>
-            <div className='text-green-600 mt-20 p-20 grid grid-cols-3 bg-gray-800 mx-10 rounded-2xl font-bold'>
+            <div className='text-green-600 mt-20 p-20 grid grid-cols-3 bg-gray-800 mx-10 rounded-2xl font-bold mb-16'>
                 <div>
                     <img className='w-10/12' src={imgUrl} alt="" />
                 </div>
@@ -95,13 +101,14 @@ const ItemDetails = () => {
                     <button onClick={handleDelivered} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2 hover:bg-green-400 hover:text-black'>Delivered</button>
                 </div>
             </div>
-            <div className='mb-20'>
-                <h3 className='text-green-600 text-center font-bold mt-16'>Restock Item</h3>
+            <div className='mb-20 bg-gray-800 py-8 mx-10 rounded-2xl'>
+                <h3 className='text-green-600 text-center font-bold'>Restock Item</h3>
                 <form onSubmit={handleOnSubmit}>
                     <input className='w-6/12 block mx-auto bg-gray-800 mt-8 text-green-600 font-bold rounded' type="number" name="number" id="number" placeholder={`Please input the amount of piece that you want to restock more(${bookName})`} onInput={(e) => e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')} required />
                     <input className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold hover:bg-green-400 hover:text-black mx-auto block mt-4' type="submit" value="Add" />
                 </form>
             </div>
+            <button onClick={handleNavigate} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2 hover:bg-green-400 hover:text-black mx-auto block m-8'>Manage Inventories</button>
         </div>
     );
 };
