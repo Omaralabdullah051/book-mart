@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
@@ -7,23 +7,27 @@ import LoadingState from '../../Shared/LoadingState/LoadingState';
 
 const SocialLogin = () => {
     const [signInWithGoogle, googleUser, loading, googleError] = useSignInWithGoogle(auth);
+    const [signInWithFacebook, facebookUser, loading2, facebookError] = useSignInWithFacebook(auth);
+    const [signInWithGithub, githubUser, loading3, githubError] = useSignInWithGithub(auth);
+
     const location = useLocation();
     const navigate = useNavigate();
 
     let from = location.state?.from?.pathname || "/";
 
 
-    if (googleError) {
-        toast.error(googleError?.message);
+    const error = googleError || facebookError || githubError;
+    if (error) {
+        toast.error(error.message);
     }
 
     useEffect(() => {
-        if (googleUser) {
+        if (googleUser || facebookUser || githubUser) {
             navigate(from, { replace: true });
         }
-    }, [googleUser, navigate, from]);
+    }, [googleUser, navigate, from, facebookUser, githubUser]);
 
-    if (loading) {
+    if (loading || loading2 || loading3) {
         return <LoadingState />
     };
 
@@ -39,11 +43,11 @@ const SocialLogin = () => {
                     <img className='w-12' src="https://i.postimg.cc/BbW09c5Y/google.png" alt="" />
                     <h6>Google</h6>
                 </div>
-                <div className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
+                <div onClick={() => signInWithFacebook()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
                     <img className='w-11' src="https://i.postimg.cc/DwcyrDQ2/facebook.png" alt="" />
                     <h6>Facebook</h6>
                 </div>
-                <div className='flex justify-center items-center bg-green-600 text-black mb-3 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
+                <div onClick={() => signInWithGithub()} className='flex justify-center items-center bg-green-600 text-black mb-3 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
                     <img className='w-10 mr-1' src="https://i.postimg.cc/XJBbzD5B/github-2.png" alt="" />
                     <h6>Github</h6>
                 </div>
