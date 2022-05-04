@@ -5,6 +5,7 @@ import ManageInventories from "./Pages/ManageInventories/ManageInventories";
 import Header from "./Pages/Shared/Header/Header";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ItemDetails from "./Pages/ItemDetails/ItemDetails";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/manageInventories" element={<ManageInventories />} />
         <Route path="/addinventoryitem" element={<AddInventoryItem />} />
+        <Route path="/itemDetails/:id" element={<ItemDetails />} />
       </Routes>
       <ToastContainer />
     </div>

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const InventoryItem = ({ book }) => {
-    const { bookName, imgUrl, discription, bookPrice, quantity, supplierName } = book;
+    const { _id, bookName, imgUrl, discription, bookPrice, quantity, supplierName } = book;
+    const navigate = useNavigate();
+    const handleNavigate = () => {
+        navigate(`/itemDetails/${_id}`);
+    }
     return (
         <div className='text-black-900 font-semibold mb-10 border-2 p-4 bg-gray-800 rounded'>
             <img className='w-60 h-80 mx-auto' src={imgUrl} alt="" />
@@ -11,7 +16,7 @@ const InventoryItem = ({ book }) => {
                 <h6>Quantity: {quantity}</h6>
                 <h6>Supplier Name: {supplierName}</h6>
                 <p className='text-justify'>Discription: {discription.slice(0, 250)}.....</p>
-                <button className='py-2 px-6 bg-gray-800 text-white rounded mx-auto block'>Manage</button>
+                <button onClick={handleNavigate} className='py-2 px-6 bg-gray-800 text-white rounded mx-auto block'>Manage</button>
             </div>
         </div>
     );
