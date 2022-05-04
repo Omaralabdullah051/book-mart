@@ -1,9 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
+import LoadingState from '../../Shared/LoadingState/LoadingState';
 
 const SocialLogin = () => {
+    const [signInWithGoogle, googleUser, loading, googleError] = useSignInWithGoogle(auth);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    let from = location.state?.from?.pathname || "/";
+
+
+    if (googleError) {
+        toast.error(googleError?.message);
+    }
+
+    useEffect(() => {
+        if (googleUser) {
+            navigate(from, { replace: true });
+        }
+    }, [googleUser, navigate, from]);
+
+    if (loading) {
+        return <LoadingState />
+    };
+
     return (
-        <div>
-            <h2>This is social login</h2>
+        <div className='mb-8'>
+            <div className='flex justify-center items-center mb-3'>
+                <div className='w-44 h-1 bg-green-600'></div>
+                <div className='mx-3'>OR</div>
+                <div className='w-44 h-1 bg-green-600'></div>
+            </div>
+            <div className='flex justify-center items-center'>
+                <div onClick={() => signInWithGoogle()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
+                    <img className='w-12' src="https://i.postimg.cc/BbW09c5Y/google.png" alt="" />
+                    <h6>Google</h6>
+                </div>
+                <div className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
+                    <img className='w-11' src="https://i.postimg.cc/DwcyrDQ2/facebook.png" alt="" />
+                    <h6>Facebook</h6>
+                </div>
+                <div className='flex justify-center items-center bg-green-600 text-black mb-3 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
+                    <img className='w-10 mr-1' src="https://i.postimg.cc/XJBbzD5B/github-2.png" alt="" />
+                    <h6>Github</h6>
+                </div>
+            </div>
         </div>
     );
 };

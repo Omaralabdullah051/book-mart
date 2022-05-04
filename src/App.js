@@ -9,6 +9,8 @@ import ItemDetails from "./Pages/ItemDetails/ItemDetails";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Login from "./Pages/Authentication/Login/Login";
 import Register from "./Pages/Authentication/Register/Register";
+import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
+import ViewProfile from "./Pages/ViewProfile/ViewProfile";
 
 
 function App() {
@@ -18,11 +20,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/manageInventories" element={<ManageInventories />} />
+        <Route path="/manageInventories" element={<RequireAuth><ManageInventories /></RequireAuth>} />
         <Route path="/addinventoryitem" element={<AddInventoryItem />} />
-        <Route path="/itemDetails/:id" element={<ItemDetails />} />
+        <Route path="/itemDetails/:id" element={<RequireAuth><ItemDetails /></RequireAuth>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/viewprofile" element={<ViewProfile />} />
       </Routes>
       <Footer />
       <ToastContainer />

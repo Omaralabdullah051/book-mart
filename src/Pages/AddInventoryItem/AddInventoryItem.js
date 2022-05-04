@@ -45,7 +45,7 @@ const AddInventoryItem = () => {
     };
 
     return (
-        <div className='w-[500px] mx-auto'>
+        <div className='w-[500px] mx-auto mb-32'>
             <form onSubmit={handleOnsubmit} className='flex flex-col border-2 border-gray-700 mx-auto mt-16 rounded-lg'>
                 <h3 className='text-center mt-8 font-bold text-green-600'>Add Inventory Item</h3>
                 <input ref={nameRef} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded mt-8' type="text" name="bookName" id="bookName" placeholder='Book Name' autoComplete='off' required />

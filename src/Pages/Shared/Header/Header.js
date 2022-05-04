@@ -10,8 +10,15 @@ const Header = () => {
         <div className='bg-gray-800 h-12'>
             <nav className='flex justify-center items-center p-2 space-x-7'>
                 <CustomLink to="/">Home</CustomLink>
-                <CustomLink to="/manageinventories">Manage Inventories</CustomLink>
-                <CustomLink to="/addinventoryitem">Add Inventory Item</CustomLink>
+                {
+                    user ? <CustomLink to="/manageinventories">Manage Inventories</CustomLink> : ''
+                }
+                {
+                    user ? <CustomLink to="/addinventoryitem">Add Item</CustomLink> : ''
+                }
+                {
+                    user ? <CustomLink to="viewprofile">View Profile</CustomLink> : ''
+                }
                 {
                     user ? <button onClick={() => signOut(auth)} className="text-[grey] font-bold">Sign Out</button> : <CustomLink to="/login">Login</CustomLink>
                 }
