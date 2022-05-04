@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const InventoryItem = ({ book }) => {
@@ -16,7 +16,7 @@ const InventoryItem = ({ book }) => {
                 <h6>Quantity: {quantity}</h6>
                 <h6>Supplier Name: {supplierName}</h6>
                 <p className='text-justify'>Discription: {discription.slice(0, 250)}.....</p>
-                <button onClick={handleNavigate} className='py-2 px-6 bg-gray-800 text-white rounded mx-auto block'>Manage</button>
+                <button onClick={handleNavigate} className='py-2 px-6 bg-gray-800 text-white rounded mx-auto block hover:bg-gray-400 hover:text-black hover:font-bold'>Manage</button>
             </div>
         </div>
     );

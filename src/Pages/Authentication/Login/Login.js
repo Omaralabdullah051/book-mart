@@ -5,7 +5,7 @@ const Login = () => {
     const emailRef = useRef('');
     useEffect(() => {
         emailRef.current.focus();
-    }, [])
+    }, []);
 
     return (
         <div className='text-green-600 font-bold mb-52'>
