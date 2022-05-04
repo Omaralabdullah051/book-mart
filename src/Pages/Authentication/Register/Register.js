@@ -5,11 +5,12 @@ import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 
 const Register = () => {
-    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, {
+    const [createUserWithEmailAndPassword, user, loading, hookError,] = useCreateUserWithEmailAndPassword(auth, {
         sendEmailVerification: true
     });
     const [updateProfile] = useUpdateProfile(auth);
     const navigate = useNavigate();
+    const [error, setError] = useState('');
 
     const nameRef = useRef('');
 
@@ -89,6 +90,40 @@ const Register = () => {
     const [agree, setAgree] = useState(false);
 
     useEffect(() => {
+        if (hookError) {
+            switch (hookError?.code) {
+                case "auth/invalid-email":
+                    toast.error("Invalid email provided, please provide a valid email");
+                    setError("Invalid email provided, please provide a valid email");
+                    setAgree(!agree);
+                    break;
+
+                case "auth/email-already-in-use":
+                    toast.error("This email is already in used");
+                    setError("This email is already in used");
+                    setAgree(!agree);
+                    break;
+
+                case "auth/email-already-exists":
+                    toast.error("Email already exists");
+                    setError("Email already exists");
+                    setAgree(!agree);
+                    break;
+
+                case "auth/invalid-credential":
+                    toast.error("Doesn't allow creation of multiple account with the same email");
+                    setError("Doesn't allow creation of multiple account with the same email");
+                    setAgree(!agree);
+                    break;
+
+                default:
+                    toast.error(hookError?.message);
+                    setError(hookError?.message);
+            }
+        }
+    }, [hookError]);
+
+    useEffect(() => {
         if (user) {
             if (!user?.user?.emailVerified) {
                 toast.success('Your authentication process is almost done. You need to verify your email. You can verify your email at any time if neccessary');
@@ -127,6 +162,7 @@ const Register = () => {
                         <input onClick={() => setAgree(!agree)} type="checkbox" name="checkbox" id="terms" className='bg-gray-700 mr-2' />
                         <label className={`${agree ? 'text-green-600' : 'text-red-500'}`} htmlFor="terms">Accept bookMart all terms and conditions</label>
                     </div>
+                    <p className='text-center mt-2 text-red-500'>{error}</p>
                     <input disabled={!agree} title={!agree ? 'Accept bookMart all terms and conditions' : ''} className={`w-[400px] mx-auto mb-8 px-8 py-2 rounded font-bold mt-3 ${agree ? 'bg-green-600 text-gray-300 hover:bg-green-400 hover:text-black' : 'bg-green-900 text-gray-300'} `} type="submit" value="Register" />
                 </form>
             </div>
