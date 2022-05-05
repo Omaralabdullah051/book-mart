@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const AddInventoryItem = () => {
-
+    const [user] = useAuthState(auth);
     const nameRef = useRef('');
     useEffect(() => {
         nameRef.current.focus();
-    }, [])
+    }, []);
 
     const handleOnsubmit = e => {
         e.preventDefault();
@@ -16,7 +18,8 @@ const AddInventoryItem = () => {
         const bookPrice = e.target.bookPrice.value;
         const quantity = e.target.quantity.value;
         const supplierName = e.target.supplierName.value;
-        const bookInfo = { bookName, imgUrl, discription, bookPrice, quantity, supplierName };
+        const email = user?.email;
+        const bookInfo = { bookName, imgUrl, discription, bookPrice, quantity, supplierName, email };
 
         (async () => {
             try {

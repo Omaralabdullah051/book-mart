@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const ManageInventories = () => {
     const [itemsInfo, setItemsInfo] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -40,6 +42,10 @@ const ManageInventories = () => {
                 }
             })();
         }
+    }
+
+    const handleNavigate = () => {
+        navigate('/addinventoryitem');
     }
 
     return (
@@ -88,6 +94,7 @@ const ManageInventories = () => {
                     </tbody>
                 </table>
             </div>
+            <button onClick={handleNavigate} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-10 hover:bg-green-400 hover:text-black mx-auto block m-8'>Add New Item</button>
         </div>
     );
 };

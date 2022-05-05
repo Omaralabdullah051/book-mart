@@ -23,6 +23,10 @@ const SocialLogin = () => {
                     toast.error("Doesn't allow to log in with same email that exists with different credential");
                     break;
 
+                case "auth/popup-closed-by-user":
+                    toast.error("popup closed. Please Don't close the popup");
+                    break;
+
                 default:
                     toast.error(hookError?.message);
             }
