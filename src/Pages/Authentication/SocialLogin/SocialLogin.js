@@ -15,14 +15,37 @@ const SocialLogin = () => {
 
     let from = location.state?.from?.pathname || "/";
 
+    useEffect(() => {
+        const hookError = googleError || facebookError || githubError
+        if (hookError) {
+            switch (hookError?.code) {
+                case "auth/account-exists-with-different-credential":
+                    toast.error("Doesn't allow to log in with same email that exists with different credential");
+                    break;
 
-    const error = googleError || facebookError || githubError;
-    if (error) {
-        toast.error(error.message);
-    }
+                default:
+                    toast.error(hookError?.message);
+            }
+        }
+    }, [googleError, facebookError, githubError]);
 
     useEffect(() => {
         if (googleUser || facebookUser || githubUser) {
+            if (googleUser) {
+                toast.success("Successfully loged in with google", {
+                    toastId: 'success1'
+                });
+            }
+            if (facebookUser) {
+                toast.success("Successfully loged in with facebook", {
+                    toastId: 'success2'
+                });
+            }
+            if (githubUser) {
+                toast.success("Successfully loged in with github", {
+                    toastId: 'success3'
+                });
+            }
             navigate(from, { replace: true });
         }
     }, [googleUser, navigate, from, facebookUser, githubUser]);

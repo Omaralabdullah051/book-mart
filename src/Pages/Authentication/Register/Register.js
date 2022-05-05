@@ -11,8 +11,9 @@ const Register = () => {
         sendEmailVerification: true
     });
     const [updateProfile] = useUpdateProfile(auth);
-    const navigate = useNavigate();
     const [error, setError] = useState('');
+    const [agree, setAgree] = useState(false);
+    const navigate = useNavigate();
 
     const nameRef = useRef('');
 
@@ -84,7 +85,7 @@ const Register = () => {
     useEffect(() => {
         nameRef.current.focus();
     }, []);
-    const [agree, setAgree] = useState(false);
+
 
     useEffect(() => {
         if (hookError) {
@@ -118,7 +119,7 @@ const Register = () => {
                     setError(hookError?.message);
             }
         }
-    }, [hookError, agree]);
+    }, [hookError]); //here I changed agree state inside useEffect hook on every render. I don't use agreee dependency because every time when the agree state changed it will call the useEffect again and again.
 
     useEffect(() => {
         if (user) {

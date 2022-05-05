@@ -9,7 +9,6 @@ const RequireAuth = ({ children }) => {
     const [user, loading] = useAuthState(auth);
     const [sendEmailVerification] = useSendEmailVerification(auth);
     const location = useLocation();
-    console.log(user);
 
     const handleResendMessage = async () => {
         await sendEmailVerification();
