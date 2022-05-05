@@ -13,6 +13,7 @@ import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
 import ViewProfile from "./Pages/ViewProfile/ViewProfile";
 import MyItems from "./Pages/MyItems/MyItems";
 import NotFound from "./Pages/NotFound/NotFound";
+import Blogs from "./Pages/Blogs/Blogs";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/myItems" element={<RequireAuth><MyItems /></RequireAuth>} />
         <Route path="/viewprofile" element={<ViewProfile />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

@@ -10,6 +10,7 @@ const Header = () => {
         <div className='bg-gray-800 h-12'>
             <nav className='flex justify-center items-center p-2 space-x-7'>
                 <CustomLink to="/">Home</CustomLink>
+                <CustomLink to="/blogs">Blogs</CustomLink>
                 {
                     user ? <CustomLink to="/manageinventories">Manage Inventories</CustomLink> : ''
                 }

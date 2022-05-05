@@ -25,7 +25,7 @@ const ChooseUs = () => {
                 {
                     advantages.map(advantage => (<div className='hover:bg-green-600 first:bg-green-600 first:text-black bg-gray-800 p-8 space-y-2 hover:text-black cursor-pointer' key={advantage._id}>
                         <h5>{advantage.name}</h5>
-                        <p>{advantage.discription}</p>
+                        <p className='text-justify'>{advantage.discription}</p>
                     </div>))
                 }
             </div>

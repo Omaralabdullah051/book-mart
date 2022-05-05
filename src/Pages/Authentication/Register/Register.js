@@ -119,6 +119,7 @@ const Register = () => {
                     setError(hookError?.message);
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [hookError]); //here I changed agree state inside useEffect hook on every render. I don't use agreee dependency because every time when the agree state changed it will call the useEffect again and again.
 
     useEffect(() => {
