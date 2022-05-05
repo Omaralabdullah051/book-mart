@@ -11,6 +11,7 @@ import Login from "./Pages/Authentication/Login/Login";
 import Register from "./Pages/Authentication/Register/Register";
 import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
 import ViewProfile from "./Pages/ViewProfile/ViewProfile";
+import MyItems from "./Pages/MyItems/MyItems";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/itemDetails/:id" element={<RequireAuth><ItemDetails /></RequireAuth>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/myItems" element={<RequireAuth><MyItems /></RequireAuth>} />
         <Route path="/viewprofile" element={<ViewProfile />} />
       </Routes>
       <Footer />

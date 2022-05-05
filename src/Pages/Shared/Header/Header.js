@@ -17,6 +17,9 @@ const Header = () => {
                     user ? <CustomLink to="/addinventoryitem">Add Item</CustomLink> : ''
                 }
                 {
+                    user ? <CustomLink to="myitems">My Items</CustomLink> : ''
+                }
+                {
                     user ? <CustomLink to="viewprofile">View Profile</CustomLink> : ''
                 }
                 {
