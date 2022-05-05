@@ -81,8 +81,8 @@ const Login = () => {
             <div className='w-[500px] mx-auto'>
                 <form onSubmit={handleOnSubmit} className='flex flex-col border-2 border-gray-700 mx-auto mt-24 rounded-lg'>
                     <h3 className='text-center mt-8 font-bold text-green-600'>Please login</h3>
-                    <input ref={emailRef} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded mt-20' type="email" name="userEmail" id="userEmail" placeholder='Your Email' autoComplete='off' required />
-                    <input ref={passwordRef} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="password" name="password" id="password" placeholder='Your password' autoComplete='off' required />
+                    <input ref={emailRef} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded mt-20 required:border-red-500' type="email" name="userEmail" id="userEmail" placeholder='Your Email' autoComplete='off' required />
+                    <input ref={passwordRef} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="password" name="password" id="password" placeholder='Your password' autoComplete='off' required />
                     <p className='text-center'>Forget password? <button onClick={handleResetPassword} className='text-blue-400'>Reset password</button></p>
                     <p className='text-center mt-2'>Don't have an account? <Link className='text-blue-400 font-medium' to="/register">Please Register</Link></p>
                     <p className='text-center mt-2 text-red-500'>{error}</p>

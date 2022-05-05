@@ -142,12 +142,12 @@ const Register = () => {
             <div className='w-[500px] mx-auto'>
                 <form onSubmit={handleOnSubmit} className='flex flex-col border-2 border-gray-700 mx-auto mt-12 rounded-lg'>
                     <h3 className='text-center mt-8 font-bold text-green-600'>Please Register</h3>
-                    <input onChange={handleNameInput} ref={nameRef} className='w-[400px] mx-auto mb-6 bg-gray-700 text-green-400 font-bold rounded mt-12' type="text" name="userName" id="userName" placeholder='Your Name' autoComplete='off' required />
-                    <input onChange={handleEmailInput} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="email" name="userEmail" id="userEmail" placeholder='Your Email' autoComplete='off' required />
+                    <input onChange={handleNameInput} ref={nameRef} className='w-[400px] mx-auto mb-6 bg-gray-700 text-green-400 font-bold rounded mt-12 required:border-red-500' type="text" name="userName" id="userName" placeholder='Your Name' autoComplete='off' required />
+                    <input onChange={handleEmailInput} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="email" name="userEmail" id="userEmail" placeholder='Your Email' autoComplete='off' required />
                     <p className='text-center text-red-500 mb-3'>{errors?.emailError}</p>
-                    <input onChange={handlePasswordInput} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="password" name="password" id="password" placeholder='Your password' autoComplete='off' required />
+                    <input onChange={handlePasswordInput} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="password" name="password" id="password" placeholder='Your password' autoComplete='off' required />
                     <p className='px-24 text-red-500 mb-3 text-justify'>{errors?.passwordError}</p>
-                    <input onChange={handleConfirmPasswordInput} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="password" name="confirmPassword" id="confirmPassword" placeholder='Confirm password' autoComplete='off' required />
+                    <input onChange={handleConfirmPasswordInput} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="password" name="confirmPassword" id="confirmPassword" placeholder='Confirm password' autoComplete='off' required />
                     <p className='text-center text-red-500 mb-3'>{errors?.confirmPasswordError}</p>
                     <input onChange={handleImgUrl} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="imgUrl" id="imgUrl" placeholder='Your image url (optional)' autoComplete='off' />
                     <p className='text-center mt-2'>Already have an account? <Link className='text-blue-400 font-medium' to="/login">Please Login</Link></p>
