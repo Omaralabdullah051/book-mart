@@ -89,7 +89,7 @@ const Login = () => {
                     <p className='text-center'>Forget password? <button onClick={handleResetPassword} className='text-blue-400'>Reset password</button></p>
                     <p className='text-center mt-2'>Don't have an account? <Link className='text-blue-400 font-medium' to="/register">Please Register</Link></p>
                     <p className='text-center mt-2 text-red-500'>{error}</p>
-                    <input className='w-[400px] mx-auto mb-3 px-8 py-2 bg-green-600 text-gray-300 rounded font-bold hover:bg-green-400 hover:text-black mt-3' type="submit" value="Login" />
+                    <input className='w-[400px] mx-auto mb-3 px-8 py-2 bg-green-600 text-gray-300 rounded font-bold hover:bg-green-400 hover:text-black mt-3 focus:ring-4 focus:ring-offset-slate-800' type="submit" value="Login" />
                     <SocialLogin />
                 </form>
             </div>

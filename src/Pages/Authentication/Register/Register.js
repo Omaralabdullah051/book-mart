@@ -168,7 +168,7 @@ const Register = () => {
                         <label className={`${agree ? 'text-green-600' : 'text-red-500'}`} htmlFor="terms">Accept bookMart all terms and conditions</label>
                     </div>
                     <p className='text-center mt-2 text-red-500'>{error}</p>
-                    <input disabled={!agree} title={!agree ? 'Accept bookMart all terms and conditions' : ''} className={`w-[400px] mx-auto mb-3 px-8 py-2 rounded font-bold mt-3 ${agree ? 'bg-green-600 text-gray-300 hover:bg-green-400 hover:text-black' : 'bg-green-900 text-gray-300'} `} type="submit" value="Register" />
+                    <input disabled={!agree} title={!agree ? 'Accept bookMart all terms and conditions' : ''} className={`w-[400px] mx-auto mb-3 px-8 py-2 rounded font-bold mt-3 ${agree ? 'bg-green-600 text-gray-300 hover:bg-green-400 hover:text-black focus:ring-4 focus:ring-offset-slate-800' : 'bg-green-900 text-gray-300'} `} type="submit" value="Register" />
                     <SocialLogin />
                 </form>
             </div>

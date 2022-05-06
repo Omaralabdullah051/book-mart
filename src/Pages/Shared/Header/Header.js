@@ -23,6 +23,8 @@ const Header = () => {
                     user ? <CustomLink to="viewprofile">View Profile</CustomLink> : ''
                 }
                 <CustomLink to="/blogs">Blogs</CustomLink>
+                <CustomLink to="/info">Info</CustomLink>
+                <CustomLink to="/about">About</CustomLink>
                 {
                     user ? <button onClick={() => signOut(auth)} className="text-[grey] font-bold">Sign Out</button> : <CustomLink to="/login">Login</CustomLink>
                 }

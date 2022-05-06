@@ -114,7 +114,7 @@ const ManageInventories = () => {
                     </tbody>
                 </table>
             </div>
-            <button onClick={handleNavigate} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-10 hover:bg-green-400 hover:text-black mx-auto block m-8'>Add New Item</button>
+            <button onClick={handleNavigate} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-10 hover:bg-green-400 hover:text-black mx-auto block m-8 focus:ring-4 focus:ring-offset-slate-800'>Add New Item</button>
             <div className='flex my-3 justify-end'>
                 {
                     [...Array(pageCount).keys()].map(number => <div key={number} onClick={() => setPages(number)} className={`mx-3 border-2 border-gray-500 text-white px-3 py-1 cursor-pointer font-bold ${pages === number ? "bg-green-600 text-white" : "bg-gray-800"}`}>{number + 1}</div>)

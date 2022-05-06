@@ -74,15 +74,15 @@ const SocialLogin = () => {
                 <div className='w-44 h-1 bg-green-600'></div>
             </div>
             <div className='flex justify-center items-center'>
-                <div onClick={() => signInWithGoogle()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
+                <div onClick={() => signInWithGoogle()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800'>
                     <img className='w-12' src="https://i.postimg.cc/BbW09c5Y/google.png" alt="" />
                     <h6>Google</h6>
                 </div>
-                <div onClick={() => signInWithFacebook()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
+                <div onClick={() => signInWithFacebook()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800'>
                     <img className='w-11' src="https://i.postimg.cc/DwcyrDQ2/facebook.png" alt="" />
                     <h6>Facebook</h6>
                 </div>
-                <div onClick={() => signInWithGithub()} className='flex justify-center items-center bg-green-600 text-black mb-3 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400'>
+                <div onClick={() => signInWithGithub()} className='flex justify-center items-center bg-green-600 text-black mb-3 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800'>
                     <img className='w-10 mr-1' src="https://i.postimg.cc/XJBbzD5B/github-2.png" alt="" />
                     <h6>Github</h6>
                 </div>

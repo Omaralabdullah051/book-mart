@@ -87,7 +87,7 @@ const AddInventoryItem = () => {
                 <input className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="text" name="supplierName" id="supplierName" placeholder='Supplier Name' autoComplete='off' required />
                 <label htmlFor="discription" className='text-green-600 pl-12 font-bold'>Discription</label>
                 <textarea className='w-[400px] h-[150px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold text-justify rounded required:border-red-500' type="text" name="discription" id="discription" placeholder='Add a short discription' autoComplete='off' required />
-                <input className='w-[400px] mx-auto mb-8 px-8 py-2 bg-green-600 text-gray-300 rounded font-bold hover:bg-green-400 hover:text-black mt-3' type="submit" value="Add Item" />
+                <input className='w-[400px] mx-auto mb-8 px-8 py-2 bg-green-600 text-gray-300 rounded font-bold hover:bg-green-400 hover:text-black mt-3 focus:ring-4 focus:ring-offset-slate-800' type="submit" value="Add Item" />
             </form>
         </div>
     );

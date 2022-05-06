@@ -23,6 +23,11 @@ const ViewProfile = () => {
         }
     }, [user, updateProfile]);
 
+
+    const handleNavigate = () => {
+        navigate('/info');
+    }
+
     return (
         <div className='bg-gray-800 m-10 rounded-2xl p-10'>
             <div>
@@ -32,8 +37,8 @@ const ViewProfile = () => {
                 <h3><i>{user?.displayName}</i></h3>
                 <h3><i>{user?.email}</i></h3>
                 <p className='mt-4 text-justify'>{`Hey ${user?.displayName}! Hope you are doing great. Here you will find more other features. You can also find detailed and accurate information about the financial condition and performance in the last few years. It also allows you to know how much executives get paid and their lasts statements on conference calls. It also enables you to view financial statements that go back to five time periods.`}</p>
-                <button className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2  hover:bg-green-400 hover:text-black'>Info</button>
-                <button onClick={() => signOut(auth)} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2  hover:bg-green-400 hover:text-black ml-8'>Sign Out</button>
+                <button onClick={handleNavigate} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2  hover:bg-green-400 hover:text-black focus:ring-4 focus:ring-offset-slate-800'>Info</button>
+                <button onClick={() => signOut(auth)} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2  hover:bg-green-400 hover:text-black ml-8 focus:ring-4 focus:ring-offset-slate-800'>Sign Out</button>
             </div>
         </div>
     );

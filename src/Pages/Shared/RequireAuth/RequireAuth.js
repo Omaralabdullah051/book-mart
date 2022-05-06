@@ -29,7 +29,7 @@ const RequireAuth = ({ children }) => {
             <h3>Your email is not verified yet</h3>
             <h4>Please check your mail inbox and Verify your email to proceed this page</h4>
             <h5>If you don't find the email verification message, click the button to resend the verification message</h5>
-            <button onClick={handleResendMessage} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2  hover:bg-green-400 hover:text-black'>Resend Verficiation Message</button>
+            <button onClick={handleResendMessage} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2  hover:bg-green-400 hover:text-black focus:ring-4 focus:ring-offset-slate-800'>Resend Verficiation Message</button>
         </div>)
     }
     return children;

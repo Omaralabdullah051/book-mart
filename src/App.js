@@ -14,6 +14,8 @@ import ViewProfile from "./Pages/ViewProfile/ViewProfile";
 import MyItems from "./Pages/MyItems/MyItems";
 import NotFound from "./Pages/NotFound/NotFound";
 import Blogs from "./Pages/Blogs/Blogs";
+import Info from "./Pages/Info/Info";
+import About from "./Pages/About/About";
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
         <Route path="/myItems" element={<RequireAuth><MyItems /></RequireAuth>} />
         <Route path="/viewprofile" element={<ViewProfile />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/info" element={<Info />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

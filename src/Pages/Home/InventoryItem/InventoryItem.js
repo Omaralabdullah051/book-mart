@@ -16,7 +16,7 @@ const InventoryItem = ({ book }) => {
                 <h6>Quantity: {quantity}</h6>
                 <h6>Supplier Name: {supplierName}</h6>
                 <p className='text-justify'>Discription: {discription.slice(0, 250)}.....</p>
-                <button onClick={handleNavigate} className='py-2 px-6 bg-gray-800 text-white rounded mx-auto block hover:bg-gray-400 hover:text-black hover:font-bold'>Manage</button>
+                <button onClick={handleNavigate} className='py-2 px-6 bg-gray-800 text-white rounded mx-auto block hover:bg-gray-400 hover:text-black hover:font-bold focus:ring-4 focus:ring-offset-slate-800'>Manage</button>
             </div>
         </div>
     );
