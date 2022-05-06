@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 import LoadingState from '../../Shared/LoadingState/LoadingState';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, hookError,] = useCreateUserWithEmailAndPassword(auth, {
@@ -13,7 +14,12 @@ const Register = () => {
     const [updateProfile] = useUpdateProfile(auth);
     const [error, setError] = useState('');
     const [agree, setAgree] = useState(false);
+    const location = useLocation();
     const navigate = useNavigate();
+    const userEmail = user?.user?.email;
+    const [token] = useToken(userEmail);
+
+    let from = location.state?.from?.pathname || "/";
 
     const nameRef = useRef('');
 
@@ -130,9 +136,14 @@ const Register = () => {
             else {
                 toast.success('User created successfully');
             }
-            navigate('/');
         }
-    }, [user, navigate]);
+    }, [user]);
+
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, navigate, from]);
 
     if (loading) {
         return <LoadingState />

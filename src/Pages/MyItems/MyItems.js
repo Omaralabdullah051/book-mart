@@ -4,24 +4,38 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const MyItems = () => {
     const [itemsInfo, setItemsInfo] = useState([]);
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch(`http://localhost:5000/booksbyemail?email=${user?.email}`);
+                const res = await fetch(`http://localhost:5000/booksbyemail?email=${user?.email}`, {
+                    headers: {
+                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
                 const data = await res.json();
                 setItemsInfo(data);
+                if (data.message === 'Forbidden access') {
+                    signOut(auth);
+                    navigate('/login');
+                }
             }
             catch (err) {
                 console.error(err.message);
-                toast.error("There was a server side problem");
+                if (err.response.status === 401 || err.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login');
+                }
             }
         })()
-    }, [user]);
+    }, [user, navigate]);
 
     const handleDeleteItem = id => {
         const proceed = window.confirm("Are you sure want to delete this item?");

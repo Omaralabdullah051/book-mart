@@ -1,14 +1,43 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddInventoryItem = () => {
     const [user] = useAuthState(auth);
     const nameRef = useRef('');
+    const navigate = useNavigate();
+
     useEffect(() => {
         nameRef.current.focus();
     }, []);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const res = await fetch(`http://localhost:5000/getbooks?email=${user?.email}`, {
+                    headers: {
+                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                const data = await res.json();
+                if (data.message === 'Forbidden access') {
+                    signOut(auth);
+                    navigate('/login');
+                }
+            }
+            catch (err) {
+                console.error(err.message);
+                if (err.response.status === 401 || err.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login');
+                }
+            }
+        })()
+    }, [user, navigate]);
+
 
     const handleOnsubmit = e => {
         e.preventDefault();

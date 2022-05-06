@@ -3,12 +3,15 @@ import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import useToken from '../../hooks/useToken';
 import LoadingState from '../../Shared/LoadingState/LoadingState';
 
 const SocialLogin = () => {
     const [signInWithGoogle, googleUser, loading, googleError] = useSignInWithGoogle(auth);
     const [signInWithFacebook, facebookUser, loading2, facebookError] = useSignInWithFacebook(auth);
     const [signInWithGithub, githubUser, loading3, githubError] = useSignInWithGithub(auth);
+    const userEmail = googleUser?.user?.email || facebookUser?.user?.email || githubUser?.user?.email;
+    const [token] = useToken(userEmail);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -50,9 +53,14 @@ const SocialLogin = () => {
                     toastId: 'success3'
                 });
             }
+        }
+    }, [googleUser, facebookUser, githubUser]);
+
+    useEffect(() => {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [googleUser, navigate, from, facebookUser, githubUser]);
+    }, [token, navigate, from]);
 
     if (loading || loading2 || loading3) {
         return <LoadingState />
