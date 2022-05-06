@@ -11,17 +11,22 @@ const ManageInventories = () => {
     const [itemsInfo, setItemsInfo] = useState([]);
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
+    const [pageCount, setPageCount] = useState(0);
+    const [pages, setPages] = useState(0);
+    const [size, setSize] = useState(4);
 
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch(`http://localhost:5000/getbooks?email=${user?.email}`, {
+                const res = await fetch(`http://localhost:5000/getbooks?email=${user?.email}&pages=${pages}&size=${size}`, {
                     headers: {
                         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                     }
                 });
                 const data = await res.json();
-                setItemsInfo(data);
+                setItemsInfo(data.books);
+                const count = data.count;
+                setPageCount(Math.ceil(count / size));
                 if (data.message === 'Forbidden access') {
                     signOut(auth);
                     navigate('/login');
@@ -35,7 +40,7 @@ const ManageInventories = () => {
                 }
             }
         })()
-    }, [user, navigate]);
+    }, [user, navigate, size, pages]);
 
     const handleDeleteItem = id => {
         const proceed = window.confirm("Are you sure want to delete this item?");
@@ -110,6 +115,18 @@ const ManageInventories = () => {
                 </table>
             </div>
             <button onClick={handleNavigate} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-10 hover:bg-green-400 hover:text-black mx-auto block m-8'>Add New Item</button>
+            <div className='flex my-3 justify-end'>
+                {
+                    [...Array(pageCount).keys()].map(number => <div key={number} onClick={() => setPages(number)} className={`mx-3 border-2 border-gray-500 text-white px-3 py-1 cursor-pointer font-bold ${pages === number ? "bg-green-600 text-white" : "bg-gray-800"}`}>{number + 1}</div>)
+                }
+                <select className='bg-gray-600 text-white font-bold' defaultValue={size} onChange={e => setSize(e.target.value)}>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
         </div>
     );
 };
