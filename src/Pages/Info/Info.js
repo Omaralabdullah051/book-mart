@@ -19,7 +19,7 @@ const Info = () => {
     }, []);
 
     return (
-        <div className='text-green-600 mt-4 py-16 px-28 font-bold'>
+        <div className='text-gray-400 mt-4 py-16 px-28 font-bold'>
             {
                 informations.map(information => (<div key={information._id} className="mb-12">
                     <p>{information.info}</p>
