@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import LoadingState from '../../Shared/LoadingState/LoadingState';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import useToken from '../../hooks/useToken';
+import image from '../../../images/coverImage13.png';
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, hookError,] = useCreateUserWithEmailAndPassword(auth, {
@@ -151,24 +152,28 @@ const Register = () => {
 
     return (
         <div className='text-green-600 font-bold mb-52'>
-            <div className='w-[500px] mx-auto'>
+            <div className='w-[300px] md:w-[500px] mx-auto'>
                 <form onSubmit={handleOnSubmit} className='flex flex-col border-2 border-gray-700 mx-auto mt-12 rounded-lg'>
-                    <h3 className='text-center mt-8 font-bold text-green-600'>Please Register</h3>
-                    <input onChange={handleNameInput} ref={nameRef} className='w-[400px] mx-auto mb-6 bg-gray-700 text-green-400 font-bold rounded mt-12 required:border-red-500' type="text" name="userName" id="userName" placeholder='Your Name' autoComplete='off' required />
-                    <input onChange={handleEmailInput} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="email" name="userEmail" id="userEmail" placeholder='Your Email' autoComplete='off' required />
-                    <p className='text-center text-red-500 mb-3'>{errors?.emailError}</p>
-                    <input onChange={handlePasswordInput} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="password" name="password" id="password" placeholder='Your password' autoComplete='off' required />
-                    <p className='px-24 text-red-500 mb-3 text-justify'>{errors?.passwordError}</p>
-                    <input onChange={handleConfirmPasswordInput} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="password" name="confirmPassword" id="confirmPassword" placeholder='Confirm password' autoComplete='off' required />
-                    <p className='text-center text-red-500 mb-3'>{errors?.confirmPasswordError}</p>
-                    <input onChange={handleImgUrl} className='w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="imgUrl" id="imgUrl" placeholder='Your image url (optional)' autoComplete='off' />
-                    <p className='text-center mt-2'>Already have an account? <Link className='text-blue-400 font-medium' to="/login">Please Login</Link></p>
+                    <div className=' mx-auto mt-8 flex justify-center items-center'>
+                        <img className='w-10' src={image} alt="" />
+                        <p className='text-green-600 font-bold'><i>bookMart</i></p>
+                    </div>
+                    <h4 className='md:text-4xl text-center mt-3 font-bold text-green-600'>Please Register</h4>
+                    <input onChange={handleNameInput} ref={nameRef} className='w-[270px] md:w-[400px] mx-auto mb-6 bg-gray-700 text-green-400 font-bold rounded mt-8 required:border-red-500' type="text" name="userName" id="userName" placeholder='Your Name' autoComplete='off' required />
+                    <input onChange={handleEmailInput} className='w-[270px] md:w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="email" name="userEmail" id="userEmail" placeholder='Your Email' autoComplete='off' required />
+                    <p className='text-sm md:text-base text-center text-red-500 mb-3'>{errors?.emailError}</p>
+                    <input onChange={handlePasswordInput} className='w-[270px] md:w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="password" name="password" id="password" placeholder='Your password' autoComplete='off' required />
+                    <p className='text-sm md:text-base px-24 text-red-500 mb-3 text-justify'>{errors?.passwordError}</p>
+                    <input onChange={handleConfirmPasswordInput} className='w-[270px] md:w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded required:border-red-500' type="password" name="confirmPassword" id="confirmPassword" placeholder='Confirm password' autoComplete='off' required />
+                    <p className='text-sm md:text-base text-center text-red-500 mb-3'>{errors?.confirmPasswordError}</p>
+                    <input onChange={handleImgUrl} className='w-[270px] md:w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded' type="text" name="imgUrl" id="imgUrl" placeholder='Your image url (optional)' autoComplete='off' />
+                    <p className='text-sm md:text-base text-center mt-2'>Already have an account? <Link className='text-blue-400 font-medium' to="/login">Please Login</Link></p>
                     <div className='flex justify-center items-center mt-2'>
                         <input onClick={() => setAgree(!agree)} type="checkbox" name="checkbox" id="terms" className='bg-gray-700 mr-2' />
-                        <label className={`${agree ? 'text-green-600' : 'text-red-500'}`} htmlFor="terms">Accept bookMart all terms and conditions</label>
+                        <label className={`text-xs md:text-base ${agree ? 'text-green-600' : 'text-red-500'}`} htmlFor="terms">Accept bookMart all terms and conditions</label>
                     </div>
-                    <p className='text-center mt-2 text-red-500'>{error}</p>
-                    <input disabled={!agree} title={!agree ? 'Accept bookMart all terms and conditions' : ''} className={`w-[400px] mx-auto mb-3 px-8 py-2 rounded font-bold mt-3 ${agree ? 'bg-green-600 text-gray-300 hover:bg-green-400 hover:text-black focus:ring-4 focus:ring-offset-slate-800' : 'bg-green-900 text-gray-300'} `} type="submit" value="Register" />
+                    <p className='text-sm md:text-base text-center mt-2 text-red-500'>{error}</p>
+                    <input disabled={!agree} title={!agree ? 'Accept bookMart all terms and conditions' : ''} className={`w-[270px] md:w-[400px] mx-auto mb-3 px-8 py-2 rounded font-bold mt-3 ${agree ? 'bg-green-600 text-gray-300 hover:bg-green-400 hover:text-black focus:ring-4 focus:ring-offset-slate-800' : 'bg-green-900 text-gray-300'} `} type="submit" value="Register" />
                     <SocialLogin />
                 </form>
             </div>

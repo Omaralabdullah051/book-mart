@@ -70,7 +70,7 @@ const ManageInventories = () => {
 
     return (
         <div className='p-12 mb-80'>
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs text-black uppercase bg-green-600">
                         <tr>

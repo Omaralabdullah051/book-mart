@@ -19,10 +19,10 @@ const Info = () => {
     }, []);
 
     return (
-        <div className='text-gray-400 mt-4 py-16 px-28 font-bold'>
+        <div className='text-gray-400 mt-4 py-8 px-5 md:py-16 md:px-28 font-bold'>
             {
                 informations.map(information => (<div key={information._id} className="mb-12">
-                    <p>{information.info}</p>
+                    <p className='text-xs md:text-sm xl:text-base text-justify'>{information.info}</p>
                 </div>))
             }
         </div>

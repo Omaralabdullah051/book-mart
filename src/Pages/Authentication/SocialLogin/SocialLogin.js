@@ -67,22 +67,22 @@ const SocialLogin = () => {
     };
 
     return (
-        <div className='mb-8'>
+        <div className='mb-2 md:mb-8'>
             <div className='flex justify-center items-center mb-3'>
-                <div className='w-44 h-1 bg-green-600'></div>
+                <div className='w-28 md:w-44 h-1 bg-green-600'></div>
                 <div className='mx-3'>OR</div>
-                <div className='w-44 h-1 bg-green-600'></div>
+                <div className='w-28 md:w-44 h-1 bg-green-600'></div>
             </div>
-            <div className='flex justify-center items-center'>
-                <div onClick={() => signInWithGoogle()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800'>
+            <div className='md:flex justify-center items-center'>
+                <div onClick={() => signInWithGoogle()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-3 md:mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800 ml-3 md:ml-0'>
                     <img className='w-12' src="https://i.postimg.cc/BbW09c5Y/google.png" alt="" />
                     <h6>Google</h6>
                 </div>
-                <div onClick={() => signInWithFacebook()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800'>
+                <div onClick={() => signInWithFacebook()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-3 md:mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800 ml-3 md:ml-0'>
                     <img className='w-11' src="https://i.postimg.cc/DwcyrDQ2/facebook.png" alt="" />
                     <h6>Facebook</h6>
                 </div>
-                <div onClick={() => signInWithGithub()} className='flex justify-center items-center bg-green-600 text-black mb-3 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800'>
+                <div onClick={() => signInWithGithub()} className='flex justify-center items-center bg-green-600 text-black mb-3 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800 ml-3 mr-3 md:ml-0 md:mr-0'>
                     <img className='w-10 mr-1' src="https://i.postimg.cc/XJBbzD5B/github-2.png" alt="" />
                     <h6>Github</h6>
                 </div>

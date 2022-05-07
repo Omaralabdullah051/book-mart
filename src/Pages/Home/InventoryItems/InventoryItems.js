@@ -21,8 +21,8 @@ const InventoryItems = () => {
 
     return (
         <div>
-            <h2 className='text-green-700 text-center mt-32 mb-6 font-bold'>Inventory Items</h2>
-            <div className='grid grid-cols-3 gap-8 py-8 px-16'>
+            <h4 className='text-green-700 text-center mt-20 xl:mt-32 mb-6 font-bold md:text-5xl'>Inventory Items</h4>
+            <div className='lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-8 py-4 md:py-8 px-4 md:px-16'>
                 {
                     books.slice(0, 6).map(book => <InventoryItem key={book._id} book={book} />)
                 }

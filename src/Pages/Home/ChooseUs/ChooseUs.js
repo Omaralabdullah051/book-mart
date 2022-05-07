@@ -20,12 +20,12 @@ const ChooseUs = () => {
 
     return (
         <div className='text-green-600 font-bold mt-24'>
-            <h3 className='text-center'>Why Choose Us</h3>
-            <div className='grid grid-cols-3 gap-6 mt-12 p-8 px-16'>
+            <h4 className='md:4xl text-center'>Why Choose Us</h4>
+            <div className='md:grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6 xl:mt-12 p-4 md:p-8 px-5 md:px-16'>
                 {
-                    advantages.map(advantage => (<div className='hover:bg-green-600 first:bg-green-600 first:text-black bg-gray-800 p-8 space-y-2 hover:text-black cursor-pointer' key={advantage._id}>
-                        <h5>{advantage.name}</h5>
-                        <p className='text-justify'>{advantage.discription}</p>
+                    advantages.map(advantage => (<div className='md:hover:bg-green-600 md:first:bg-green-600 md:first:text-black bg-gray-800 py-8 px-4 md:p-8 space-y-2 md:hover:text-black cursor-pointer mb-3 odd:bg-green-600 odd:text-black even:text-gray-500' key={advantage._id}>
+                        <h6 className='xl:text-2xl'>{advantage.name}</h6>
+                        <p className='text-justify text-xs xl:text-base'>{advantage.discription}</p>
                     </div>))
                 }
             </div>
