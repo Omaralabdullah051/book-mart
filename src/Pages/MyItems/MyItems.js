@@ -60,50 +60,86 @@ const MyItems = () => {
     }
 
     return (
-        <div className='p-12 mb-80'>
-            <div className="overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-sm text-left text-gray-500">
-                    <thead className="text-xs text-black uppercase bg-green-600">
-                        <tr>
-                            <th scope="col" className="px-6 py-3">
-                                Item name
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Quantity
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Supplier Name
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Price
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                <span className="sr-only">Edit</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            itemsInfo?.map(itemInfo => (<tr key={itemInfo._id} className="border-b-4 border-green-600 bg-gray-800 text-gray-300 font-bold">
-                                <th scope="row" className="px-6 py-4 font-bold text-gray-300 whitespace-nowrap">
-                                    {itemInfo.bookName}
+        <div>
+            <div className='p-12 mb-80 hidden md:block'>
+                <div className="overflow-x-auto shadow-md rounded-lg">
+                    <table className="w-full text-sm text-left text-gray-500">
+                        <thead className="text-xs text-black uppercase bg-green-600">
+                            <tr>
+                                <th scope="col" className="px-6 py-3">
+                                    Item name
                                 </th>
-                                <td className="px-6 py-4">
-                                    {itemInfo.quantity}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {itemInfo.supplierName}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {itemInfo.bookPrice}
-                                </td>
-                                <td className="px-6 py-4 text-right">
-                                    <button onClick={() => handleDeleteItem(itemInfo._id)} className="font-medium text-red-500"><FontAwesomeIcon className='h-6' icon={faTrash} /></button>
-                                </td>
-                            </tr>))
-                        }
-                    </tbody>
-                </table>
+                                <th scope="col" className="px-6 py-3">
+                                    Quantity
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Supplier Name
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Price
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    <span className="sr-only">Edit</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                itemsInfo?.map(itemInfo => (<tr key={itemInfo._id} className="border-b-4 border-green-600 bg-gray-800 text-gray-300 font-bold">
+                                    <th scope="row" className="px-6 py-4 font-bold text-gray-300 whitespace-nowrap">
+                                        {itemInfo.bookName}
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {itemInfo.quantity}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {itemInfo.supplierName}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {itemInfo.bookPrice}
+                                    </td>
+                                    <td className="px-6 py-4 text-right">
+                                        <button onClick={() => handleDeleteItem(itemInfo._id)} className="font-medium text-red-500"><FontAwesomeIcon className='h-6' icon={faTrash} /></button>
+                                    </td>
+                                </tr>))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div className='p-4 md:p-12 mb-80 block md:hidden'>
+                <div className="overflow-x-auto shadow-md rounded-lg">
+                    <table className="w-full text-sm text-left text-gray-500">
+                        <thead className="text-xs text-black uppercase bg-green-600">
+                            <tr>
+                                <th scope="col" className="px-3 py-3">
+                                    Item name
+                                </th>
+                                <th scope="col" className="px-3 py-3">
+                                    Quantity
+                                </th>
+                                <th scope="col" className="px-3 py-3">
+                                    <span className="sr-only">Edit</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                itemsInfo?.map(itemInfo => (<tr key={itemInfo._id} className="border-b-4 border-green-600 bg-gray-800 text-gray-300 font-bold text-xs">
+                                    <th scope="row" className="px-3 py-4 font-bold text-gray-300 whitespace-nowrap">
+                                        {itemInfo.bookName}
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {itemInfo.quantity}
+                                    </td>
+                                    <td className="px-3 py-4 text-right">
+                                        <button onClick={() => handleDeleteItem(itemInfo._id)} className="font-medium text-red-500"><FontAwesomeIcon className='h-6' icon={faTrash} /></button>
+                                    </td>
+                                </tr>))
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
