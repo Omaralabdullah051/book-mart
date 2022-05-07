@@ -11,7 +11,7 @@ const ItemDetails = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch(`http://localhost:5000/books/${id}`);
+                const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/books/${id}`);
                 const data = await res.json();
                 setbookInfo(data);
             }
@@ -25,7 +25,7 @@ const ItemDetails = () => {
 
     const handleDelivered = () => {
         const updatedQuantity = { quantity: quantity - 1 };
-        const url = `http://localhost:5000/books/${id}`;
+        const url = `https://hidden-eyrie-82910.herokuapp.com/books/${id}`;
         (async () => {
             try {
                 const res = await fetch(url, {
@@ -50,7 +50,7 @@ const ItemDetails = () => {
     const handleOnSubmit = e => {
         e.preventDefault();
         const updatedQuantity = { quantity: parseInt(e.target.number.value) + parseInt(bookInfo.quantity) };
-        const url = `http://localhost:5000/books/${id}`;
+        const url = `https://hidden-eyrie-82910.herokuapp.com/books/${id}`;
         (async () => {
             try {
                 if (e.target.number.value > 0 && e.target.number.value < 500) {

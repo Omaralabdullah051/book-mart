@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const AddInventoryItem = () => {
     const [user] = useAuthState(auth);
@@ -17,7 +18,7 @@ const AddInventoryItem = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch(`http://localhost:5000/getbooks?email=${user?.email}`, {
+                const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/getbooks?email=${user?.email}`, {
                     headers: {
                         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -52,7 +53,7 @@ const AddInventoryItem = () => {
 
         (async () => {
             try {
-                const res = await fetch('http://localhost:5000/books', {
+                const res = await fetch('https://hidden-eyrie-82910.herokuapp.com/books', {
                     method: "POST",
                     headers: {
                         'Content-type': 'application/json'
@@ -78,6 +79,7 @@ const AddInventoryItem = () => {
 
     return (
         <div className='w-[300px] md:w-[500px] mx-auto mb-32'>
+            <PageTitle title="Add Item" />
             <form onSubmit={handleOnsubmit} className='flex flex-col border-2 border-gray-700 mx-auto mt-16 rounded-lg'>
                 <h5 className='md:text-4xl text-center mt-8 font-bold text-green-600'>Add Inventory Item</h5>
                 <input ref={nameRef} className='w-[270px] md:w-[400px] mx-auto mb-3 bg-gray-700 text-green-400 font-bold rounded mt-8 required:border-red-500' type="text" name="bookName" id="bookName" placeholder='Book Name' autoComplete='off' required />

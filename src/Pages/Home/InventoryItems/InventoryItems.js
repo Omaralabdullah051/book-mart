@@ -8,7 +8,7 @@ const InventoryItems = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch('http://localhost:5000/books');
+                const res = await fetch('https://hidden-eyrie-82910.herokuapp.com/books');
                 const data = await res.json();
                 setBooks(data);
             }

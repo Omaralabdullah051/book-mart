@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const MyItems = () => {
     const [itemsInfo, setItemsInfo] = useState([]);
@@ -15,7 +16,7 @@ const MyItems = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch(`http://localhost:5000/booksbyemail?email=${user?.email}`, {
+                const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/booksbyemail?email=${user?.email}`, {
                     headers: {
                         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -42,7 +43,7 @@ const MyItems = () => {
         if (proceed) {
             (async () => {
                 try {
-                    const res = await fetch(`http://localhost:5000/books?id=${id}`, {
+                    const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/books?id=${id}`, {
                         method: "DELETE"
                     });
                     const data = await res.json();
@@ -61,6 +62,7 @@ const MyItems = () => {
 
     return (
         <div>
+            <PageTitle title="My Items" />
             <div className='p-12 mb-80 hidden md:block'>
                 <div className="overflow-x-auto shadow-md rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500">

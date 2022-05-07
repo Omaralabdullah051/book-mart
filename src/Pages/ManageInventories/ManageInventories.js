@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const ManageInventories = () => {
     const [itemsInfo, setItemsInfo] = useState([]);
@@ -18,7 +19,7 @@ const ManageInventories = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch(`http://localhost:5000/getbooks?email=${user?.email}&pages=${pages}&size=${size}`, {
+                const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/getbooks?email=${user?.email}&pages=${pages}&size=${size}`, {
                     headers: {
                         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -47,7 +48,7 @@ const ManageInventories = () => {
         if (proceed) {
             (async () => {
                 try {
-                    const res = await fetch(`http://localhost:5000/books?id=${id}`, {
+                    const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/books?id=${id}`, {
                         method: "DELETE"
                     });
                     const data = await res.json();
@@ -71,6 +72,7 @@ const ManageInventories = () => {
     return (
         <div>
             <div className='p-12 mb-80 hidden md:block'>
+                <PageTitle title="Manage Item" />
                 <div className="overflow-x-auto shadow-md rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500">
                         <thead className="text-xs text-black uppercase bg-green-600">

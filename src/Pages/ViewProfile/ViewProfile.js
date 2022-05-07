@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const ViewProfile = () => {
     const [user] = useAuthState(auth);
@@ -30,6 +31,7 @@ const ViewProfile = () => {
 
     return (
         <div className='bg-gray-800 m-5 md:m-10 rounded-2xl p-4 md:p-10'>
+            <PageTitle title="View Profile" />
             <div>
                 <img className='w-40 mx-auto md:mx-0 rounded-full md:ml-20 xl:ml-32' src={user?.photoURL} alt="" />
             </div>

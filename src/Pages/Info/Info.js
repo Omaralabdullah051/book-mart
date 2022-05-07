@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const Info = () => {
     const [informations, setInformations] = useState([]);
@@ -7,7 +8,7 @@ const Info = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch('http://localhost:5000/informations');
+                const res = await fetch('https://hidden-eyrie-82910.herokuapp.com/informations');
                 const data = await res.json();
                 setInformations(data);
             }
@@ -20,6 +21,7 @@ const Info = () => {
 
     return (
         <div className='text-gray-400 mt-4 py-8 px-5 md:py-16 md:px-28 font-bold'>
+            <PageTitle title="Info" />
             {
                 informations.map(information => (<div key={information._id} className="mb-12">
                     <p className='text-xs md:text-sm xl:text-base text-justify'>{information.info}</p>

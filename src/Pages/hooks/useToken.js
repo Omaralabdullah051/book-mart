@@ -7,7 +7,7 @@ const useToken = (email) => {
         (async () => {
             try {
                 if (email) {
-                    const res = await fetch(`http://localhost:5000/login?email=${email}`);
+                    const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/login?email=${email}`);
                     const data = await res.json();
                     setToken(data.accessToken);
                     localStorage.setItem('accessToken', data.accessToken);

@@ -7,6 +7,7 @@ import useToken from '../../hooks/useToken';
 import LoadingState from '../../Shared/LoadingState/LoadingState';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import image from '../../../images/coverImage13.png';
+import PageTitle from '../../Shared/PageTitle/PageTitle';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -82,6 +83,7 @@ const Login = () => {
 
     return (
         <div className='text-green-600 font-bold mb-52'>
+            <PageTitle title="Login" />
             <div className='w-[300px] md:w-[500px] mx-auto'>
                 <form onSubmit={handleOnSubmit} className='flex flex-col border-2 border-gray-700 mx-auto mt-10 md:mt-24 rounded-lg'>
                     <div className=' mx-auto mt-8 flex justify-center items-center'>

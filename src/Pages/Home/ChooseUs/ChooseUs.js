@@ -7,7 +7,7 @@ const ChooseUs = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch('http://localhost:5000/advantages');
+                const res = await fetch('https://hidden-eyrie-82910.herokuapp.com/advantages');
                 const data = await res.json();
                 setAdvantages(data);
             }

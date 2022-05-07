@@ -7,6 +7,7 @@ import LoadingState from '../../Shared/LoadingState/LoadingState';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import useToken from '../../hooks/useToken';
 import image from '../../../images/coverImage13.png';
+import PageTitle from '../../Shared/PageTitle/PageTitle';
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, hookError,] = useCreateUserWithEmailAndPassword(auth, {
@@ -152,6 +153,7 @@ const Register = () => {
 
     return (
         <div className='text-green-600 font-bold mb-52'>
+            <PageTitle title="Register" />
             <div className='w-[300px] md:w-[500px] mx-auto'>
                 <form onSubmit={handleOnSubmit} className='register-form'>
                     <div className='logo-container mt-8'>

@@ -7,7 +7,7 @@ const OurServices = () => {
     useEffect(() => {
         (async () => {
             try {
-                const res = await fetch('http://localhost:5000/services');
+                const res = await fetch('https://hidden-eyrie-82910.herokuapp.com/services');
                 const data = await res.json();
                 setServices(data);
             }
