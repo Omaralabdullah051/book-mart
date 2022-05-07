@@ -88,27 +88,27 @@ const ItemDetails = () => {
 
     return (
         <div>
-            <div className='text-green-600 mt-20 p-20 grid grid-cols-3 bg-gray-800 mx-10 rounded-2xl font-bold mb-16'>
+            <div className='text-green-600 mt-5 lg:mt-20 py-5 px-4 md:px-16 md:py-12 lg:p-20 lg:grid grid-cols-3 lg:gap-4 bg-gray-800 mx-4 md:mx-10 rounded-2xl font-bold mb-16'>
                 <div>
-                    <img className='w-10/12' src={imgUrl} alt="" />
+                    <img className='md:w-6/12 lg:w-full xl:w-10/12  mx-auto md:mx-auto-0' src={imgUrl} alt="" />
                 </div>
                 <div className='col-span-2 space-y-1'>
-                    <h4>{bookName}</h4>
-                    <h4>${bookPrice}</h4>
-                    <h4>{quantity} piece</h4>
-                    <h5>By {supplierName}</h5>
-                    <p className='text-justify'>{discription}</p>
-                    <button onClick={handleDelivered} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2 hover:bg-green-400 hover:text-black focus:ring-4 focus:ring-offset-slate-800'>Delivered</button>
+                    <p className='md:text-2xl xl:text-3xl mt-5 lg:mt-0'>{bookName}</p>
+                    <p className='md:text-2xl xl:text-3xl'>${bookPrice}</p>
+                    <p className='md:text-2xl xl:text-3xl'>{quantity} piece</p>
+                    <p className='md:text-2xl xl:text-2xl'>By {supplierName}</p>
+                    <p className='text-xs md:text-xs xl:text-base text-justify text-gray-500'>{discription}</p>
+                    <button onClick={handleDelivered} className='btn hover:btn-hover focus:btn-focus btn-sm btn-md xl:mb-0'>Delivered</button>
                 </div>
             </div>
-            <div className='mb-20 bg-gray-800 py-8 mx-10 rounded-2xl'>
-                <h3 className='text-green-600 text-center font-bold'>Restock Item</h3>
+            <div className='mb-20 bg-gray-800 py-8 mx-4 md:mx-10 rounded-2xl'>
+                <h5 className='md:text-4xl text-green-600 text-center font-bold'>Restock Item</h5>
                 <form onSubmit={handleOnSubmit}>
-                    <input className='w-6/12 block mx-auto bg-gray-800 mt-8 text-green-600 font-bold rounded' type="number" name="number" id="number" placeholder={`Please input the amount of piece that you want to restock more(${bookName})`} onInput={(e) => e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')} required />
-                    <input className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold hover:bg-green-400 hover:text-black mx-auto block mt-4 focus:ring-4 focus:ring-offset-slate-800' type="submit" value="Add" />
+                    <input className='w-10/12 xl:w-7/12 block mx-auto bg-gray-800 mt-8 text-green-600 font-bold rounded' type="number" name="number" id="number" placeholder={`Please input the amount of piece that you want to restock more(${bookName})`} onInput={(e) => e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')} required />
+                    <input className='btn hover:btn-hover focus:btn-focus btn-sm btn-md xl:mb-0 mx-auto block' type="submit" value="Add" />
                 </form>
             </div>
-            <button onClick={handleNavigate} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-2 hover:bg-green-400 hover:text-black mx-auto block m-8'>Manage Inventories</button>
+            <button onClick={handleNavigate} className='btn hover:btn-hover focus:btn-focus btn-sm btn-md xl:mb-0 mx-auto block'>Manage Inventories</button>
         </div>
     );
 };
