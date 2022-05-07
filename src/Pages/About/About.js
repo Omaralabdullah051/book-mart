@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 import image from '../../images/coverImage13.png';
 import PageTitle from '../Shared/PageTitle/PageTitle';
 
@@ -15,7 +14,6 @@ const About = () => {
             }
             catch (err) {
                 console.error(err);
-                toast.error("There was a server side problem");
             }
         })()
     }, []);

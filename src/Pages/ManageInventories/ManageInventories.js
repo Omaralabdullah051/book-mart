@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -59,7 +58,6 @@ const ManageInventories = () => {
                 }
                 catch (err) {
                     console.error(err.message);
-                    toast.error("There was a server side problem");
                 }
             })();
         }

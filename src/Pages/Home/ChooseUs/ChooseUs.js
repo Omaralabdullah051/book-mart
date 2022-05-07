@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 
 const ChooseUs = () => {
     const [advantages, setAdvantages] = useState([]);
@@ -13,7 +12,6 @@ const ChooseUs = () => {
             }
             catch (err) {
                 console.error(err.message);
-                toast("There was a server side error");
             }
         })()
     }, []);

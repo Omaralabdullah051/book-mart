@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const Info = () => {
@@ -14,7 +13,6 @@ const Info = () => {
             }
             catch (err) {
                 console.error(err);
-                toast.error("There was a server side problem");
             }
         })()
     }, []);

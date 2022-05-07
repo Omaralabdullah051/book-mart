@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+
 
 const OurServices = () => {
     const [services, setServices] = useState([]);
@@ -13,7 +13,6 @@ const OurServices = () => {
             }
             catch (err) {
                 console.error(err);
-                toast.error("There was a server side problem");
             }
         })()
     }, []);

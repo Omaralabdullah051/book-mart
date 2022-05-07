@@ -72,7 +72,6 @@ const AddInventoryItem = () => {
             }
             catch (err) {
                 console.error(err.message);
-                toast.error('There was a server side error');
             }
         })();
     };

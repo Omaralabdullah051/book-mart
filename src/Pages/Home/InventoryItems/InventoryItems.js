@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 import InventoryItem from '../InventoryItem/InventoryItem';
 
 const InventoryItems = () => {
@@ -14,7 +13,6 @@ const InventoryItems = () => {
             }
             catch (err) {
                 console.error(err.message);
-                toast.error('There was a server side problem');
             }
         })()
     }, [])

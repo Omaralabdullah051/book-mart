@@ -69,9 +69,9 @@ const SocialLogin = () => {
     return (
         <div className='mb-2 md:mb-8'>
             <div className='flex justify-center items-center mb-3'>
-                <div className='w-28 md:w-44 h-1 bg-green-600'></div>
-                <div className='mx-3'>OR</div>
-                <div className='w-28 md:w-44 h-1 bg-green-600'></div>
+                <div className='w-32 md:w-44 h-1 bg-green-600'></div>
+                <div className='mx-2'>OR</div>
+                <div className='w-32 md:w-44 h-1 bg-green-600'></div>
             </div>
             <div className='md:flex justify-center items-center'>
                 <div onClick={() => signInWithGoogle()} className='flex justify-center items-center bg-green-600 text-black mb-3 mr-3 md:mr-2 p-1 rounded cursor-pointer hover:bg-green-900 hover:text-gray-400 focus:ring-4 focus:ring-offset-slate-800 ml-3 md:ml-0'>

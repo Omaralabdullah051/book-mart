@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { toast } from "react-toastify";
+
 
 const useToken = (email) => {
     const [token, setToken] = useState('');
@@ -14,7 +14,6 @@ const useToken = (email) => {
                 }
             }
             catch (err) {
-                toast.error("There was a server side error");
                 console.error(err.message);
             }
         })()

@@ -17,7 +17,6 @@ const ItemDetails = () => {
             }
             catch (err) {
                 console.error(err.message);
-                toast("There was a server side problem");
             }
         })();
 
@@ -42,7 +41,6 @@ const ItemDetails = () => {
             }
             catch (err) {
                 console.error(err);
-                toast.error("There was a server side error");
             }
         })();
     }
@@ -77,7 +75,6 @@ const ItemDetails = () => {
             }
             catch (err) {
                 console.error(err);
-                toast.error("There was a server side error");
             }
         })();
     }
