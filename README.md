@@ -28,5 +28,5 @@ In the overall project, you will found:
 
  - I installed React Fontawesome & hero icons to add some icons & react-helmet-async to set dynamic title.
 
- - I installed React toastify to add some toast & alos sweetalert2 to use confirmation popup. 
+ - I installed React toastify to add some toast & also sweetalert2 to use confirmation popup. 
 
