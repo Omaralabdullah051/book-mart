@@ -12,7 +12,7 @@ In the overall project, you will found:
 
  - I added many features and services for stocking inventory items.
 
- - I added a About page where I introduced all of our team members. 
+ - I implemented JWT to ensure the authenticity and verify users. 
 
  - I added a Blogs page and write some significant questions answers.
 
@@ -24,9 +24,9 @@ In the overall project, you will found:
 
  - I implemented firebase & React Firebase Hooks to simplify my application's authentication system.
 
- - I used tailwind css with some customization in index.css and config file with some directives.
+ - I used tailwind css with some customization in index.css and config file with some directives & flowbite.
 
- - I installed React Fontawesome & hero icons to add some icons.
+ - I installed React Fontawesome & hero icons to add some icons & react-helmet-async to set dynamic title.
 
- - I installed React toastify to add some toast. 
+ - I installed React toastify to add some toast & alos sweetalert2 to use confirmation popup. 
 
