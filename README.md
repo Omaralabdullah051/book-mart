@@ -16,7 +16,7 @@ In the overall project, you will found:
 
  - I added a Blogs page and write some significant questions answers.
 
-## List of teachnologies && functionality that I used and implemented in my project:
+## List of teachnologies & functionality that I used and implemented in my project:
 
 In the overall project, you will found:
 
