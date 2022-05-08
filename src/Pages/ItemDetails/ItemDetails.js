@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import LoadingState from '../Shared/LoadingState/LoadingState';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const ItemDetails = () => {
     const { id } = useParams();
     const [bookInfo, setbookInfo] = useState({});
     const { bookName, bookPrice, discription, imgUrl, quantity, supplierName } = bookInfo;
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
             try {
                 const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/books/${id}`);
                 const data = await res.json();
+                setLoading(false);
                 setbookInfo(data);
             }
             catch (err) {
+                setLoading(false);
                 // console.error(err.message);
             }
         })();
@@ -85,6 +90,8 @@ const ItemDetails = () => {
 
     return (
         <div>
+            <PageTitle title={`${bookName}`} />
+            {loading ? <LoadingState /> : ''}
             <div className='text-green-600 mt-5 lg:mt-20 py-5 px-4 md:px-16 md:py-12 lg:p-20 lg:grid grid-cols-3 lg:gap-4 bg-gray-800 mx-4 md:mx-10 rounded-2xl font-bold mb-16'>
                 <div>
                     <img className='md:w-6/12 lg:w-full xl:w-10/12  mx-auto md:mx-auto-0' src={imgUrl} alt="" />

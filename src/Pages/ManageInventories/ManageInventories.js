@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 import PageTitle from '../Shared/PageTitle/PageTitle';
 import withDelete from '../Shared/HOC/withDelete';
+import LoadingState from '../Shared/LoadingState/LoadingState';
 
 const ManageInventories = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
     const navigate = useNavigate();
@@ -14,6 +15,7 @@ const ManageInventories = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
     const [pageCount, setPageCount] = useState(0);
     const [pages, setPages] = useState(0);
     const [size, setSize] = useState(4);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
@@ -24,6 +26,7 @@ const ManageInventories = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
                     }
                 });
                 const data = await res.json();
+                setLoading(false);
                 setItemsInfo(data.books);
                 const count = data.count;
                 setPageCount(Math.ceil(count / size));
@@ -34,6 +37,7 @@ const ManageInventories = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
             }
             catch (err) {
                 // console.error(err.message);
+                setLoading(false);
                 if (err.response.status === 401 || err.response.status === 403) {
                     signOut(auth);
                     navigate('/login');
@@ -49,8 +53,9 @@ const ManageInventories = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
 
     return (
         <div>
+            <PageTitle title="Manage Item" />
+            {loading ? <LoadingState /> : ''}
             <div className='p-12 mb-80 hidden md:block'>
-                <PageTitle title="Manage Item" />
                 <div className="overflow-x-auto shadow-md rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500">
                         <thead className="text-xs text-black uppercase bg-green-600">

@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import LoadingState from '../../Shared/LoadingState/LoadingState';
 
 const ChooseUs = () => {
     const [advantages, setAdvantages] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
             try {
                 const res = await fetch('https://hidden-eyrie-82910.herokuapp.com/advantages');
                 const data = await res.json();
+                setLoading(false);
                 setAdvantages(data);
             }
             catch (err) {
                 // console.error(err.message);
+                setLoading(false);
             }
         })()
     }, []);
@@ -19,6 +23,7 @@ const ChooseUs = () => {
     return (
         <div className='text-green-600 font-bold mt-24'>
             <h4 className='md:4xl text-center'>Why Choose Us</h4>
+            {loading ? <LoadingState /> : ''}
             <div className='md:grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6 xl:mt-12 p-4 md:p-8 px-5 md:px-16'>
                 {
                     advantages.map(advantage => (<div className='md:hover:bg-green-600 md:first:bg-green-600 md:first:text-black bg-gray-800 py-8 px-4 md:p-8 space-y-2 md:hover:text-black cursor-pointer mb-3 odd:bg-green-600 odd:text-black even:text-gray-500' key={advantage._id}>

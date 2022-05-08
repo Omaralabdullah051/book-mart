@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -7,10 +7,12 @@ import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import PageTitle from '../Shared/PageTitle/PageTitle';
 import withDelete from '../Shared/HOC/withDelete';
+import LoadingState from '../Shared/LoadingState/LoadingState';
 
 const MyItems = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
@@ -21,6 +23,7 @@ const MyItems = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
                     }
                 });
                 const data = await res.json();
+                setLoading(false);
                 setItemsInfo(data);
                 if (data.message === 'Forbidden access') {
                     signOut(auth);
@@ -29,6 +32,7 @@ const MyItems = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
             }
             catch (err) {
                 // console.error(err.message);
+                setLoading(false);
                 if (err.response.status === 401 || err.response.status === 403) {
                     signOut(auth);
                     navigate('/login');
@@ -40,6 +44,7 @@ const MyItems = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
     return (
         <div>
             <PageTitle title="My Items" />
+            {loading ? <LoadingState /> : ''}
             <div className='p-12 mb-80 hidden md:block'>
                 <div className="overflow-x-auto shadow-md rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500">
