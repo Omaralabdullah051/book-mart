@@ -6,9 +6,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 import PageTitle from '../Shared/PageTitle/PageTitle';
+import withDelete from '../Shared/HOC/withDelete';
 
-const ManageInventories = () => {
-    const [itemsInfo, setItemsInfo] = useState([]);
+const ManageInventories = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const [pageCount, setPageCount] = useState(0);
@@ -33,35 +33,15 @@ const ManageInventories = () => {
                 }
             }
             catch (err) {
-                console.error(err.message);
+                // console.error(err.message);
                 if (err.response.status === 401 || err.response.status === 403) {
                     signOut(auth);
                     navigate('/login');
                 }
             }
         })()
-    }, [user, navigate, size, pages]);
+    }, [user, navigate, size, pages, setItemsInfo]);
 
-    const handleDeleteItem = id => {
-        const proceed = window.confirm("Are you sure want to delete this item?");
-        if (proceed) {
-            (async () => {
-                try {
-                    const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/books?id=${id}`, {
-                        method: "DELETE"
-                    });
-                    const data = await res.json();
-                    if (data.deletedCount >= 1) {
-                        const restItems = itemsInfo.filter(itemInfo => itemInfo._id !== id);
-                        setItemsInfo(restItems);
-                    }
-                }
-                catch (err) {
-                    console.error(err.message);
-                }
-            })();
-        }
-    }
 
     const handleNavigate = () => {
         navigate('/addinventoryitem');
@@ -180,4 +160,4 @@ const ManageInventories = () => {
     );
 };
 
-export default ManageInventories;
+export default withDelete(ManageInventories);

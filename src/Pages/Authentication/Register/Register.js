@@ -165,7 +165,7 @@ const Register = () => {
                     <input onChange={handleEmailInput} className='w-[300px] md:w-[400px] input-style mb-3 mt-0 required' type="email" name="userEmail" id="userEmail" placeholder='Your Email' autoComplete='off' required />
                     <p className='text-sm md:text-base text-center text-red-500 mb-3'>{errors?.emailError}</p>
                     <input onChange={handlePasswordInput} className='w-[300px] md:w-[400px] input-style mb-3 mt-0 required' type="password" name="password" id="password" placeholder='Your password' autoComplete='off' required />
-                    <p className='text-sm md:text-base px-24 text-red-500 mb-3 text-justify'>{errors?.passwordError}</p>
+                    <p className='text-sm md:text-base px-4 md:px-24 text-red-500 mb-3 text-justify'>{errors?.passwordError}</p>
                     <input onChange={handleConfirmPasswordInput} className='w-[300px] md:w-[400px] input-style mb-3 mt-0 required' type="password" name="confirmPassword" id="confirmPassword" placeholder='Confirm password' autoComplete='off' required />
                     <p className='text-sm md:text-base text-center text-red-500 mb-3'>{errors?.confirmPasswordError}</p>
                     <input onChange={handleImgUrl} className='w-[300px] md:w-[400px] input-style mb-3 mt-0' type="text" name="imgUrl" id="imgUrl" placeholder='Your image url (optional)' autoComplete='off' />

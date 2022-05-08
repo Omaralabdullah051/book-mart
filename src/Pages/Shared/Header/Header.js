@@ -38,16 +38,16 @@ const Header = () => {
                 {
                     user ? <CustomLink to="myitems">My Items</CustomLink> : ''
                 }
-                {
-                    user ? <CustomLink to="viewprofile">View Profile</CustomLink> : ''
-                }
                 <CustomLink to="/blogs">Blogs</CustomLink>
                 <CustomLink to="/info">Info</CustomLink>
                 <CustomLink to="/about">About</CustomLink>
                 {
+                    user ? <CustomLink to="viewprofile">View Profile</CustomLink> : ''
+                }
+                {
                     user ? <button onClick={() => signOut(auth)} className="text-[grey] font-bold">Sign Out</button> : <CustomLink to="/login">Login</CustomLink>
                 }
-                <div className='flex justify-between items-center'>
+                <div className='flex justify-between items-center mt-2 xl:mt-0'>
                     <div className='flex justify-center items-center xl:hidden'>
                         <img className='w-6' src={image} alt="" />
                         <p className='text-xs text-green-600 font-bold ml-1'><i>bookmart</i></p>

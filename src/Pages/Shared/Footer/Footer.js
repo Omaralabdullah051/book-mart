@@ -1,7 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faLocationDot, faCopyright } from '@fortawesome/free-solid-svg-icons';
-import image from '../../../images/coverImage14.png';
+import image from '../../../images/coverImage13.png';
+import image2 from '../../../images/coverImage14.png'
 
 const Footer = () => {
     const year = new Date().getFullYear();
@@ -9,7 +10,7 @@ const Footer = () => {
         <footer className="bg-gray-800 mt-80">
             <div className='md:flex justify-around items-center text-center md:text-justify'>
                 <div>
-                    <img className='w-40 md:w-52 pt-5 md:pt-0 mx-auto md:mx-0 xl:w-full mt-20' src={image} alt="" />
+                    <img className='w-40 md:w-52 pt-5 md:pt-0 mx-auto md:mx-0 xl:w-full mt-20' src={image2} alt="" />
                 </div>
                 <div className='text-green-600 space-y-3 font-bold mt-8 md:mt-20'>
                     <h6>Contact Info</h6>

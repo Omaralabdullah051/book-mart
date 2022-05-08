@@ -12,7 +12,7 @@ const OurServices = () => {
                 setServices(data);
             }
             catch (err) {
-                console.error(err);
+                // console.error(err);
             }
         })()
     }, []);

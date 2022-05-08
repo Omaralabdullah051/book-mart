@@ -13,7 +13,7 @@ const About = () => {
                 setMembers(data);
             }
             catch (err) {
-                console.error(err);
+                // console.error(err);
             }
         })()
     }, []);

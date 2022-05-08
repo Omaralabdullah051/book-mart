@@ -16,7 +16,7 @@ const ItemDetails = () => {
                 setbookInfo(data);
             }
             catch (err) {
-                console.error(err.message);
+                // console.error(err.message);
             }
         })();
 
@@ -40,7 +40,7 @@ const ItemDetails = () => {
                 }
             }
             catch (err) {
-                console.error(err);
+                // console.error(err);
             }
         })();
     }
@@ -74,7 +74,7 @@ const ItemDetails = () => {
                 e.target.reset();
             }
             catch (err) {
-                console.error(err);
+                // console.error(err);
             }
         })();
     }

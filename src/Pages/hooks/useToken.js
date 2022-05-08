@@ -14,7 +14,7 @@ const useToken = (email) => {
                 }
             }
             catch (err) {
-                console.error(err.message);
+                // console.error(err.message);
             }
         })()
     }, [email]);

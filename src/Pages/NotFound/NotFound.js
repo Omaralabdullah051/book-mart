@@ -7,11 +7,11 @@ const NotFound = () => {
         navigate('/');
     }
     return (
-        <div className='bg-gray-800 m-10 rounded-2xl text-green-600 font-bold text-center p-10'>
-            <img className='w-5/12 mx-auto' src="https://i.postimg.cc/CKp95RJc/notfound.png" alt="" />
-            <h3>Page Not Found</h3>
-            <h5 className='mt-2'>The page you are looking for might have been removed or name changed or temporarily unavailable</h5>
-            <button onClick={handleNavigate} className='px-8 py-2 bg-green-600 text-gray-300 rounded font-bold mt-4  hover:bg-green-400 hover:text-black focus:ring-4 focus:ring-offset-slate-800'>Go To Home</button>
+        <div className='bg-gray-800 m-4 md:m-10 rounded-2xl text-green-600 font-bold text-center p-4 md:p-10'>
+            <img className='w-full md:w-5/12 mx-auto' src="https://i.postimg.cc/CKp95RJc/notfound.png" alt="" />
+            <h6 className='md:text-2xl lg:text-4xl'>Page Not Found</h6>
+            <p className='text-gray-500 text-xs md:text-base lg:text-xl mt-2 md:mb-2'>The page you are looking for might have been removed or name changed or temporarily unavailable</p>
+            <button onClick={handleNavigate} className='btn hover:btn-hover focus:btn-focus btn-sm btn-md xl:mb-0'>Go To Home</button>
         </div>
     );
 };

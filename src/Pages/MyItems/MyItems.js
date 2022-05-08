@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -6,9 +6,9 @@ import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import PageTitle from '../Shared/PageTitle/PageTitle';
+import withDelete from '../Shared/HOC/withDelete';
 
-const MyItems = () => {
-    const [itemsInfo, setItemsInfo] = useState([]);
+const MyItems = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -28,35 +28,14 @@ const MyItems = () => {
                 }
             }
             catch (err) {
-                console.error(err.message);
+                // console.error(err.message);
                 if (err.response.status === 401 || err.response.status === 403) {
                     signOut(auth);
                     navigate('/login');
                 }
             }
         })()
-    }, [user, navigate]);
-
-    const handleDeleteItem = id => {
-        const proceed = window.confirm("Are you sure want to delete this item?");
-        if (proceed) {
-            (async () => {
-                try {
-                    const res = await fetch(`https://hidden-eyrie-82910.herokuapp.com/books?id=${id}`, {
-                        method: "DELETE"
-                    });
-                    const data = await res.json();
-                    if (data.deletedCount >= 1) {
-                        const restItems = itemsInfo.filter(itemInfo => itemInfo._id !== id);
-                        setItemsInfo(restItems);
-                    }
-                }
-                catch (err) {
-                    console.error(err.message);
-                }
-            })();
-        }
-    }
+    }, [user, navigate, setItemsInfo]);
 
     return (
         <div>
@@ -145,4 +124,5 @@ const MyItems = () => {
     );
 };
 
-export default MyItems;
+//export to higher order component
+export default withDelete(MyItems);

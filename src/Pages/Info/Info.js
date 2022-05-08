@@ -12,7 +12,7 @@ const Info = () => {
                 setInformations(data);
             }
             catch (err) {
-                console.error(err);
+                // console.error(err);
             }
         })()
     }, []);
