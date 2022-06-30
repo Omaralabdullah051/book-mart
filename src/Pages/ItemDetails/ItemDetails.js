@@ -65,7 +65,7 @@ const ItemDetails = () => {
     const updatedQuantity = {
       quantity: parseInt(e.target.number.value) + parseInt(bookInfo.quantity),
     };
-    const url = ` https://hidden-eyrie-82910.herokuapp.com/books/${id}`;
+    const url = ` https://hidden-eyrie-82910.herokuapp.com/books/restock/${id}`;
     (async () => {
       try {
         if (e.target.number.value > 0 && e.target.number.value < 500) {
