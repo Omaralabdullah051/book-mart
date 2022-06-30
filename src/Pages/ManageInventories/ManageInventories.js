@@ -33,7 +33,7 @@ const ManageInventories = ({ itemsInfo, setItemsInfo, handleDeleteItem }) => {
     (async () => {
       try {
         const res = await fetch(
-          `https://hidden-eyrie-82910.herokuapp.com/getbooks?email=${user?.email}&pages=${pages}&size=${size}`,
+          ` https://hidden-eyrie-82910.herokuapp.com/getbooks?email=${user?.email}&pages=${pages}&size=${size}`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
